@@ -32,7 +32,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.superheroes_list, parent, false);
+                .inflate(R.layout.issue_list, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
@@ -40,14 +40,18 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        IssuePojo issuePojo = issuePojos.get(position);
+        try {
+            IssuePojo issuePojo = issuePojos.get(position);
 
-        imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
 
-        holder.textViewIssueName.setText("Title:"+ issuePojo.getIssueTitle());
-        holder.textViewDescription.setText("Description:"+ issuePojo.getDescriptions());
-        holder.textViewIssueRepoterName.setText("Issue Repoter Name:"+ issuePojo.getReporterName());
-        holder.textViewCreatedBy.setText("Last Update Time:"+ issuePojo.getLatestUpdatedTime());
+            holder.textViewIssueName.setText("Title:"+ issuePojo.getIssueTitle());
+            holder.textViewDescription.setText("Description:"+ issuePojo.getDescriptions());
+            holder.textViewIssueRepoterName.setText("Issue Repoter Name:"+ issuePojo.getReporterName());
+            holder.textViewCreatedBy.setText("Last Update Time:"+ issuePojo.getLatestUpdatedTime());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }

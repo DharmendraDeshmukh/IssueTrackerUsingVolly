@@ -100,11 +100,12 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             listIssuePojo.add(issuePojo);
-            Collections.sort(listIssuePojo);
 
         }
 
         //Finally initializing our adapter
+        Collections.sort(listIssuePojo);
+
         adapter = new IssueAdapter(listIssuePojo, this);
 
         //Adding adapter to recyclerview
